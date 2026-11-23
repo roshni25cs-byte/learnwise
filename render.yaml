@@ -20,19 +20,11 @@ services:
       - key: ACCESS_TOKEN_EXPIRE_MINUTES
         value: 1440
       - key: DATABASE_URL
-        fromDatabase:
-          name: learnwise-db
-          property: connectionString
+        value: postgresql://learnwise_user:8Btl4Cy4uWJbhdzZhsOhjoRbNbfeFwhG@dpg-dc20sq49v7es73bv1n00-a/learnwise_kecp
       - key: FIRST_SUPERUSER_EMAIL
         value: admin@learnwise.edu
       - key: FIRST_SUPERUSER_PASSWORD
         value: Admin@LearnWise2026
-      - key: GEMINI_API_KEY
-        sync: false
-      - key: SUPABASE_URL
-        sync: false
-      - key: SUPABASE_KEY
-        sync: false
 
   # ---------------------------------------------------------------------------
   # LearnWise Frontend (React + Vite SPA)
@@ -56,13 +48,3 @@ services:
           name: learnwise-backend
           property: host
           format: https://{host}/api/v1
-
-# ---------------------------------------------------------------------------
-# Free-Tier Managed PostgreSQL Database
-# ---------------------------------------------------------------------------
-databases:
-  - name: learnwise-db
-    region: oregon
-    plan: free
-    databaseName: learnwise
-    user: learnwise_user
